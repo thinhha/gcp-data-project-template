@@ -16,7 +16,7 @@
 
 variable "project_name" {
   description = "GCP project name."
-  default     = "my-project-name"
+  default     = "kthxbayes-sandbox"
 }
 
 variable "region" {
