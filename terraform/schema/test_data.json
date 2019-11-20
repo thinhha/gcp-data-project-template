@@ -1,0 +1,17 @@
+[
+    {
+      "mode": "NULLABLE",
+      "name": "location",
+      "type": "STRING"
+    },
+    {
+      "mode": "NULLABLE",
+      "name": "name",
+      "type": "STRING"
+    },
+    {
+      "mode": "NULLABLE",
+      "name": "id",
+      "type": "INTEGER"
+    }
+  ]

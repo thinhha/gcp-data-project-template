@@ -27,6 +27,7 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.core.config.Configurator
 import java.time.Instant
 import java.util.*
+import com.mypackage.foundation.messages.DataMessage
 import com.mypackage.foundation.utils.*
 
 
@@ -89,11 +90,11 @@ class Gcs2BqPipeline {
             pipeline
                 .fromText("Read from GCS", options.inputGCSPath)
                 .map("Insert into BigQuery") { line ->
-                    val (id, atm_name, location) = line.split(",")
+                    val message = gsonBuilder().fromJson<DataMessage>(line, DataMessage::class.java)
                     TableRow()
-                        .set("id", id)
-                        .set("atm_name", atm_name)
-                        .set("location", location)
+                        .set("id", message.id)
+                        .set("name", message.name)
+                        .set("location", message.location)
                         .set("run_id", runId)
                         .set("insertion_timestamp", Instant.now().toISO8601())
                 }

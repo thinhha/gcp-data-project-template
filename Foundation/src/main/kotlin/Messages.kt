@@ -24,11 +24,10 @@ import java.util.*
 
 sealed class Message : Serializable
 
-/** Transaction Recorded Event Message **/
-data class TransactionMessage(
+/** Event Message Class **/
+data class DataMessage(
     val id: UUID,
-    val atm_name: String,
+    val name: String,
     val location: String = "UK",
-    val run_id: UUID,
     val insertion_timestamp: Instant
 ) : Message(), Serializable

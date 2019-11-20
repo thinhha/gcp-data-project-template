@@ -36,7 +36,7 @@ resource "google_pubsub_subscription" "my_pubsub_subscription" {
 }
 
 resource "google_storage_bucket" "gcs" {
-  name     = "my-project-gcs-bucket-203291974"
+  name     = "kthxbayes-com-gcs-terraform"
   location = "EU"
   project  = var.project_name
 }
@@ -54,4 +54,5 @@ resource "google_bigquery_table" "table" {
   table_id   = "table_name"
   friendly_name = "Raw data table (may contain duplicates)"
   project    = var.project_name
+  schema = file("schema/test_data.json")
 }
