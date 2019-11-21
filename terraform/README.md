@@ -1,6 +1,6 @@
 # Sample Data Project Creation Terraform
 
-This directory contains GCP resource definitions in Terraform that you can use to bootstap your data project.
+This directory contains GCP resource definitions in Terraform that you can use to bootstrap your data project.
 
 Before executing `terraform apply`, you will need to change the following variables:
 - In `variables.tf `, change the default `project_name` to your project name.
