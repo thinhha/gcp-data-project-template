@@ -54,5 +54,27 @@ resource "google_bigquery_table" "table" {
   table_id   = "table_name"
   friendly_name = "Raw data table (may contain duplicates)"
   project    = var.project_name
-  schema = file("schema/test_data.json")
+  schema = file("schema/bq/test_data.json")
+}
+
+resource "google_spanner_instance" "datapoc" {
+  config       = "regional-europe-west1"
+  display_name = "Test Spanner Instance"
+  name         = "datapoc"
+  num_nodes    = 1
+  project      = var.project_name
+}
+
+resource "google_spanner_database" "default" {
+  instance = "${google_spanner_instance.datapoc.name}"
+  name     = "customer"
+  project  = var.project_name
+  ddl = [
+    <<-EOT
+      ${file("schema/spanner/transaction.sql")}
+      EOT
+    , <<-EOT
+      ${file("schema/spanner/ledger.sql")}
+      EOT
+  ]
 }
