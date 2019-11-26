@@ -28,6 +28,5 @@ sealed class Message : Serializable
 data class DataMessage(
     val id: UUID,
     val name: String,
-    val location: String = "UK",
-    val insertion_timestamp: Instant
+    val location: String = "UK"
 ) : Message(), Serializable

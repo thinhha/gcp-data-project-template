@@ -12,6 +12,16 @@
     {
       "mode": "NULLABLE",
       "name": "id",
-      "type": "INTEGER"
+      "type": "STRING"
+    },
+    {
+      "mode": "NULLABLE",
+      "name": "insertion_timestamp",
+      "type": "TIMESTAMP"
+    },
+    {
+      "mode": "NULLABLE",
+      "name": "run_id",
+      "type": "STRING"
     }
   ]
